@@ -1,8 +1,6 @@
 """Plantilla: servicio web para el modelo de precios de casas en California.
 
-Solo tienes que completar las partes marcadas con TODO.
-El resto del código ya está hecho.
-Autores: <Alejandro Felices>, <Hector Ordín>
+Autores: Alejandro Felices, Hector Ordín
 
 Ejecución en local (con modelo_california.pkl generado en el ejercicio 1):
     uvicorn app:app --reload
@@ -19,9 +17,9 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 MODEL_PATH = "modelo_california.pkl"
-# TODO: URL "raw" del modelo en TU repositorio de GitHub. Formato:
-# https://raw.githubusercontent.com/<usuario>/<repositorio>/main/modelo_california.pkl
-MODEL_URL = "https://raw.githubusercontent.com/<usuario>/<repositorio>/main/modelo_california.pkl"
+
+# URL "raw" del modelo en tu repositorio de GitHub
+MODEL_URL = "https://raw.githubusercontent.com/hordinlencinaEnlaces/dam2d_opia_practica_2/main/modelo_california.pkl"
 DOWNLOAD_TIMEOUT = 30  # segundos
 
 # El modelo se carga al arrancar y se guarda aquí.
@@ -41,14 +39,11 @@ class HouseFeatures(BaseModel):
 
 
 def download_model(url: str = MODEL_URL, path: str = MODEL_PATH):
-    """Descarga el modelo desde `url` y lo guarda en `path`.
-
-    Pistas: usa requests.get(url, timeout=DOWNLOAD_TIMEOUT), comprueba el
-    resultado con response.raise_for_status() y escribe response.content en
-    el fichero abriéndolo en modo binario ("wb").
-    """
-    # TODO: implementa la descarga
-    raise NotImplementedError("Completa download_model()")
+    """Descarga el modelo desde `url` y lo guarda en `path`."""
+    response = requests.get(url, timeout=DOWNLOAD_TIMEOUT)
+    response.raise_for_status()
+    with open(path, "wb") as f:
+        f.write(response.content)
 
 
 def load_model(path: str = MODEL_PATH):
