@@ -2,7 +2,7 @@
 
 **Autores:** Alejandro Felices, Hector Ordín  
 **Repositorio GitHub:** [dam2d_opia_practica_2](https://github.com/hordinlencinaEnlaces/dam2d_opia_practica_2)  
-**URL del Servicio Desplegado:** `https://dam2d-california-housing.onrender.com` *(Sustituye por tu URL exacta de Render)*
+**URL del Servicio Desplegado:** `https://dam2d-opia-practica-2.onrender.com/`
 
 ## Pasos del Despliegue
 
